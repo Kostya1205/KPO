@@ -1,15 +1,11 @@
 import controller.GameMachine;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import model.GameRoom;
@@ -57,8 +53,37 @@ public class Main extends Application {
 
         btnAllSubjects.setOnAction(event -> textArea.setText(gameRoom.allSubjects()));
 
+        Button btnSortByPrice = new Button("Sort By Price");
+        btnSortByPrice.setFont(new Font(15));
+
+        btnSortByPrice.setOnAction(event -> gameRoom.sortByPrice());
+
+
+        Button btnSortByWeight = new Button("Sort By Weight");
+        btnSortByWeight.setFont(new Font(15));
+
+        btnSortByWeight.setOnAction(event -> gameRoom.sortByWeight());
+
+
+        TextField textField = new TextField();
+        textField.setFont(new Font(15));
+
+
+        Button btnSearchByPrice = new Button("Search by price");
+        btnSearchByPrice.setFont(new Font(15));
+
+        btnSearchByPrice.setOnAction(event -> textArea.setText(gameRoom.searchByPrice(textField.getText())));
+
+
+        Button btnSearchByName = new Button("Search by name");
+        btnSearchByName.setFont(new Font(15));
+
+        btnSearchByName.setOnAction(event -> textArea.setText(gameRoom.searchByName(textField.getText())));
+
+
+
         FlowPane root = new FlowPane(10,10, textArea,btnAdd,btnClear,btnPriceOfAllSubjects,btnWeightOfAllSubjects
-                ,btnSubjectWithMaxPrice,btnSubjectWithMaxWeight,btnAllSubjects);
+                ,btnSubjectWithMaxPrice,btnSubjectWithMaxWeight,btnAllSubjects,btnSortByPrice,btnSortByWeight,textField,btnSearchByPrice,btnSearchByName);
         root.setAlignment(Pos.CENTER);
 
 

@@ -1,7 +1,6 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class SubjectsToBuy {
     private final List<SubjectToBuy> subjectsToBuys;
@@ -10,7 +9,30 @@ public class SubjectsToBuy {
         this.subjectsToBuys = new ArrayList<>();
     }
 
+    public void sortByPrice(){
+        Comparator<SubjectToBuy> priceComparator = Comparator.comparingInt(SubjectToBuy::getPrice);
 
+        // Сортируем список с использованием компаратора
+        subjectsToBuys.sort(priceComparator);
+    }
+    public void sortByWeight(){
+        Comparator<SubjectToBuy> priceComparator = Comparator.comparingInt(SubjectToBuy::getWeight);
+
+        // Сортируем список с использованием компаратора
+        subjectsToBuys.sort(priceComparator);
+    }
+    public SubjectToBuy searchByName(String name){
+        for (SubjectToBuy subjectToBuy: subjectsToBuys) {
+            if (Objects.equals(name, subjectToBuy.getName())) return subjectToBuy;
+        }
+        return null;
+    }
+    public SubjectToBuy searchByPrice(String price){
+        for (SubjectToBuy subjectToBuy: subjectsToBuys) {
+            if (Integer.parseInt(price)==subjectToBuy.getPrice()) return subjectToBuy;
+        }
+        return null;
+    }
     public String priceOfAll(){
         int sum = 0;
         for (SubjectToBuy subjectToBuy: subjectsToBuys) {
@@ -40,9 +62,6 @@ public class SubjectsToBuy {
                 maxSubjectToBuy=subjectToBuy;
         }
         return "Subject with max price = "+maxSubjectToBuy;
-    }
-    public List<SubjectToBuy> getSubjectsToBuys() {
-        return subjectsToBuys;
     }
     public SubjectToBuy get(int number) {
         return subjectsToBuys.get(number);

@@ -23,8 +23,25 @@ public class GameRoom {
     public String subjectWithMaxWeight(){
         return subjectsToBuy.maxWeight();
     }
+    public void sortByPrice(){
+        subjectsToBuy.sortByPrice();
+    }
+    public void sortByWeight(){
+        subjectsToBuy.sortByWeight();
+    }
     public String allSubjects(){
         return subjectsToBuy.toString();
     }
-
+    public String searchByName(String name){
+        SubjectToBuy subjectToBuy1 = subjectsToBuy.searchByName(name);
+        if(subjectToBuy1!=null)
+            return subjectToBuy1.toString();
+        return "No results";
+    }
+    public String searchByPrice(String price){
+        SubjectToBuy subjectToBuy1 = subjectsToBuy.searchByPrice(price);
+        if(subjectToBuy1!=null)
+            return subjectToBuy1.toString();
+        return "No results";
+    }
 }
