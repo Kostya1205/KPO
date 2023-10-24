@@ -10,18 +10,21 @@ public class GameRoom {
     public void addSubjectToBuy(SubjectToBuy subjectToBuy){
         subjectsToBuy.add(subjectToBuy);
     }
-    public String priceOfAllToys(){
+    public String priceOfAllSubjects(){
         return subjectsToBuy.priceOfAll();
     }
 
-    public String weightOfAllToys(){
+    public String weightOfAllSubjects(){
         return subjectsToBuy.weightOfAll();
     }
-    public String toyWithMaxPrice(){
+    public String subjectWithMaxPrice(){
         return subjectsToBuy.maxPrice();
     }
-    public String toyWithMaxWeight(){
+    public String subjectWithMaxWeight(){
         return subjectsToBuy.maxWeight();
+    }
+    public String allSubjects(){
+        return subjectsToBuy.toString();
     }
 
 }

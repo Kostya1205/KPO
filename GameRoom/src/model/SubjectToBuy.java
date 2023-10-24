@@ -39,4 +39,10 @@ public class SubjectToBuy {
     public String getSubjectName() {
         return name;
     }
+
+    @Override
+    public String toString() {
+        return " Type - "+getSubjectName()+" Name - "+getName()+" Weight - "+getWeight()+" Price - "+getPrice()+"\n";
+
+    }
 }

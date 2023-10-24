@@ -31,7 +31,7 @@ public class SubjectsToBuy {
             if(maxSubjectToBuy.getWeight()<subjectToBuy.getWeight())
                 maxSubjectToBuy=subjectToBuy;
         }
-        return maxSubjectToBuy.getName()+" - "+maxSubjectToBuy.getSubjectName()+" с самым большим весом равным "+maxSubjectToBuy.getWeight();
+        return "Subject with max weight = "+maxSubjectToBuy;
     }
     public String maxPrice(){
         SubjectToBuy maxSubjectToBuy = subjectsToBuys.get(subjectsToBuys.size()-1);
@@ -39,7 +39,7 @@ public class SubjectsToBuy {
             if(maxSubjectToBuy.getPrice()<subjectToBuy.getPrice())
                 maxSubjectToBuy=subjectToBuy;
         }
-        return maxSubjectToBuy.getName()+" - "+maxSubjectToBuy.getSubjectName()+" с самой большой ценой равной "+maxSubjectToBuy.getPrice();
+        return "Subject with max price = "+maxSubjectToBuy;
     }
     public List<SubjectToBuy> getSubjectsToBuys() {
         return subjectsToBuys;
@@ -52,5 +52,13 @@ public class SubjectsToBuy {
     }
     public int size(){
         return subjectsToBuys.size();
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        for (SubjectToBuy subjectsToBuy : subjectsToBuys)
+            result.append(subjectsToBuy);
+        return result.toString();
     }
 }
