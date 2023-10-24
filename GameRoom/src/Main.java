@@ -80,15 +80,19 @@ public class Main extends Application {
 
         btnSearchByName.setOnAction(event -> textArea.setText(gameRoom.searchByName(textField.getText())));
 
+        Button btnAmountOfOperation = new Button("Amount Of Operation");
+        btnAmountOfOperation.setFont(new Font(15));
 
+        btnAmountOfOperation.setOnAction(event -> textArea.setText(gameRoom.getAmountOfOperation()));
 
         FlowPane root = new FlowPane(10,10, textArea,btnAdd,btnClear,btnPriceOfAllSubjects,btnWeightOfAllSubjects
-                ,btnSubjectWithMaxPrice,btnSubjectWithMaxWeight,btnAllSubjects,btnSortByPrice,btnSortByWeight,textField,btnSearchByPrice,btnSearchByName);
+                ,btnSubjectWithMaxPrice,btnSubjectWithMaxWeight,btnAllSubjects,btnSortByPrice,btnSortByWeight,textField
+                ,btnSearchByPrice,btnSearchByName,btnAmountOfOperation);
         root.setAlignment(Pos.CENTER);
 
 
         primaryStage.setTitle("GameRoom");
-        primaryStage.setScene(new Scene(root, 700, 600));
+        primaryStage.setScene(new Scene(root, 700, 700));
         primaryStage.show();
     }
     public static void main(String[] args) {

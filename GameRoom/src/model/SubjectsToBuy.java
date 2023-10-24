@@ -21,17 +21,19 @@ public class SubjectsToBuy {
         // Сортируем список с использованием компаратора
         subjectsToBuys.sort(priceComparator);
     }
-    public SubjectToBuy searchByName(String name){
+    public String searchByName(String name){
+        SubjectsToBuy subjectsToBuy2 = new SubjectsToBuy();
         for (SubjectToBuy subjectToBuy: subjectsToBuys) {
-            if (Objects.equals(name, subjectToBuy.getName())) return subjectToBuy;
+            if (Objects.equals(name, subjectToBuy.getName()))  subjectsToBuy2.add(subjectToBuy);
         }
-        return null;
+        return subjectsToBuy2.toString();
     }
-    public SubjectToBuy searchByPrice(String price){
+    public String searchByPrice(String price){
+        SubjectsToBuy subjectsToBuy2 = new SubjectsToBuy();
         for (SubjectToBuy subjectToBuy: subjectsToBuys) {
-            if (Integer.parseInt(price)==subjectToBuy.getPrice()) return subjectToBuy;
+            if (Integer.parseInt(price)==subjectToBuy.getPrice()) subjectsToBuy2.add(subjectToBuy);
         }
-        return null;
+        return subjectsToBuy2.toString();
     }
     public String priceOfAll(){
         int sum = 0;
