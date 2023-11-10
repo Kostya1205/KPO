@@ -1,4 +1,7 @@
-import controller.GameMachine;
+package com.gameroom;
+
+import com.gameroom.controller.GameMachine;
+import com.gameroom.model.GameRoom;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -8,11 +11,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import model.GameRoom;
 
-public class Main extends Application {
-    public GameRoom gameRoom;
 
+public class GameRoomApplication extends Application {
+    GameRoom gameRoom;
+    @Override
     public void start(Stage primaryStage) {
         gameRoom = new GameRoom();
         TextArea textArea = new TextArea();
@@ -96,6 +99,6 @@ public class Main extends Application {
         primaryStage.show();
     }
     public static void main(String[] args) {
-        launch(args);
+        launch();
     }
 }

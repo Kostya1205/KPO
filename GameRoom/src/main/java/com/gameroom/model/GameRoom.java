@@ -1,4 +1,4 @@
-package model;
+package com.gameroom.model;
 
 public class GameRoom {
     private final SubjectsToBuy subjectsToBuy;

@@ -1,6 +1,7 @@
-package view;
+package com.gameroom.view;
 
-import model.GameRoom;
+
+import com.gameroom.model.GameRoom;
 
 public class ShowInfo {
     public ShowInfo(GameRoom gameRoom){

@@ -1,4 +1,4 @@
-package model;
+package com.gameroom.model;
 
 public class SubjectToBuy {
     protected final int price;

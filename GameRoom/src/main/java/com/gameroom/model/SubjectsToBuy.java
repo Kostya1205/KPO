@@ -1,4 +1,4 @@
-package model;
+package com.gameroom.model;
 
 import java.util.*;
 

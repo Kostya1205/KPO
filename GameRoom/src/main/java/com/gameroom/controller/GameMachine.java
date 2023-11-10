@@ -1,6 +1,6 @@
-package controller;
+package com.gameroom.controller;
 
-import model.*;
+import com.gameroom.model.*;
 
 import java.util.Random;
 

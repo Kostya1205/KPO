@@ -1,4 +1,4 @@
-package model;
+package com.gameroom.model;
 
 public class Furniture extends SubjectToBuy{
     public Furniture(int price, int weight, String name) {
