@@ -50,7 +50,7 @@ public class ShowWindow {
         Button btnAllSubjects = new Button("Print AllSubjects");
         btnAllSubjects.setFont(new Font(15));
 
-        btnAllSubjects.setOnAction(event -> textArea.setText(gameRoom.allSubjects()));
+        btnAllSubjects.setOnAction(event -> textArea.setText(gameRoom.allSubjects().toString()));
 
         Button btnSortByPrice = new Button("Sort By Price");
         btnSortByPrice.setFont(new Font(15));

@@ -41,22 +41,22 @@ public class GameRoom {
 
         subjectsToBuy.sortByWeight();
     }
-    public String allSubjects(){
+    public SubjectsToBuy allSubjects(){
         amountOfOperation++;
 
-        return subjectsToBuy.toString();
+        return subjectsToBuy;
     }
     public String searchByName(String name){
         amountOfOperation++;
         if(subjectsToBuy.searchByName(name)!=null)
-            return subjectsToBuy.searchByName(name);
+            return subjectsToBuy.searchByName(name).toString();
         return "No results";
     }
     public String searchByPrice(String price){
         amountOfOperation++;
 
         if(subjectsToBuy.searchByPrice(price)!=null)
-            return subjectsToBuy.searchByPrice(price);
+            return subjectsToBuy.searchByPrice(price).toString();
         return "No results";
     }
     public String getAmountOfOperation(){

@@ -21,19 +21,19 @@ public class SubjectsToBuy {
         // Сортируем список с использованием компаратора
         subjectsToBuys.sort(priceComparator);
     }
-    public String searchByName(String name){
+    public SubjectsToBuy searchByName(String name){
         SubjectsToBuy subjectsToBuy2 = new SubjectsToBuy();
         for (SubjectToBuy subjectToBuy: subjectsToBuys) {
             if (Objects.equals(name, subjectToBuy.getName()))  subjectsToBuy2.add(subjectToBuy);
         }
-        return subjectsToBuy2.toString();
+        return subjectsToBuy2;
     }
-    public String searchByPrice(String price){
+    public SubjectsToBuy searchByPrice(String price){
         SubjectsToBuy subjectsToBuy2 = new SubjectsToBuy();
         for (SubjectToBuy subjectToBuy: subjectsToBuys) {
             if (Integer.parseInt(price)==subjectToBuy.getPrice()) subjectsToBuy2.add(subjectToBuy);
         }
-        return subjectsToBuy2.toString();
+        return subjectsToBuy2;
     }
     public String priceOfAll(){
         int sum = 0;
@@ -68,6 +68,10 @@ public class SubjectsToBuy {
     public SubjectToBuy get(int number) {
         return subjectsToBuys.get(number);
     }
+    public List<SubjectToBuy> getAll() {
+        return subjectsToBuys;
+    }
+
     public void add(SubjectToBuy subjectToBuy) {
         this.subjectsToBuys.add(subjectToBuy);
     }
@@ -81,5 +85,18 @@ public class SubjectsToBuy {
         for (SubjectToBuy subjectsToBuy : subjectsToBuys)
             result.append(subjectsToBuy);
         return result.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SubjectsToBuy that = (SubjectsToBuy) o;
+        return Objects.equals(subjectsToBuys, that.subjectsToBuys);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(subjectsToBuys);
     }
 }
