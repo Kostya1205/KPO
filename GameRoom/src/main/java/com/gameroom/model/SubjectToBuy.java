@@ -1,5 +1,7 @@
 package com.gameroom.model;
 
+import java.util.Objects;
+
 public class SubjectToBuy {
     protected final int price;
     protected final int weight;
@@ -44,5 +46,18 @@ public class SubjectToBuy {
     public String toString() {
         return " Type - "+getSubjectName()+" Name - "+getName()+" Weight - "+getWeight()+" Price - "+getPrice()+"\n";
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SubjectToBuy that = (SubjectToBuy) o;
+        return price == that.price && weight == that.weight && Objects.equals(name, that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(price, weight, name);
     }
 }
