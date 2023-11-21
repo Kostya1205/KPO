@@ -1,5 +1,7 @@
 package com.gameroom.model;
 
+import com.mwrite.WriteToFile;
+
 public class GameRoom {
     private final SubjectsToBuy subjectsToBuy;
     private int amountOfOperation;
@@ -13,6 +15,7 @@ public class GameRoom {
         subjectsToBuy.add(subjectToBuy);
         amountOfOperation++;
     }
+
     public String priceOfAllSubjects(){
         return subjectsToBuy.priceOfAll();
     }
@@ -33,7 +36,6 @@ public class GameRoom {
     }
     public void sortByPrice(){
         amountOfOperation++;
-
         subjectsToBuy.sortByPrice();
     }
     public void sortByWeight(){
@@ -45,6 +47,10 @@ public class GameRoom {
         amountOfOperation++;
 
         return subjectsToBuy;
+    }
+    public String allSubjectsToFile(){
+        WriteToFile writeToFile = new WriteToFile("output.txt");
+        return writeToFile.writeToFile(allSubjects().toString());
     }
     public String searchByName(String name){
         amountOfOperation++;
