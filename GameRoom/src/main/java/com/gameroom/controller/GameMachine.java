@@ -26,4 +26,11 @@ public class GameMachine {
         gameRoom.addSubjectToBuy(subjectToBuy);
         return subjectToBuy+" add to GameRoom\n";
     }
+    public String buySubjectHurd(GameRoom gameRoom){
+        StringBuilder text = new StringBuilder();
+        for (int i = 0; i < 20; i++) {
+            text.append(buySubject(gameRoom));
+        }
+        return text.toString();
+    }
 }
