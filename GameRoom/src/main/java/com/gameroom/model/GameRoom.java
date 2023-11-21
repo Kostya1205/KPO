@@ -1,6 +1,6 @@
 package com.gameroom.model;
 
-import com.mwrite.WriteToFile;
+import org.writet.Write;
 
 public class GameRoom {
     private final SubjectsToBuy subjectsToBuy;
@@ -49,8 +49,8 @@ public class GameRoom {
         return subjectsToBuy;
     }
     public String allSubjectsToFile(){
-        WriteToFile writeToFile = new WriteToFile("output.txt");
-        return writeToFile.writeToFile(allSubjects().toString());
+        Write writeToFile = new Write();
+        return writeToFile.WriteToFile(allSubjects().toString());
     }
     public String searchByName(String name){
         amountOfOperation++;

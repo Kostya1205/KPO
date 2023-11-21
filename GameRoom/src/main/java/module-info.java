@@ -1,4 +1,5 @@
 module com.gameroom {
+    requires WriteTF;
     requires javafx.controls;
     requires javafx.fxml;
 

@@ -23,6 +23,11 @@ public class ShowWindow {
         btnAdd.setFont(new Font(15));
         btnAdd.setOnAction(event -> textArea.setText(new GameMachine().buySubject(gameRoom)));
 
+        Button btnAddHard = new Button("Add subject Hurd in room");
+        btnAddHard.setFont(new Font(15));
+        btnAddHard.setOnAction(event -> textArea.setText(new GameMachine().buySubjectHurd(gameRoom)));
+
+
         Button btnClear = new Button("Clear textArea");
         btnClear.setFont(new Font(15));
         btnClear.setOnAction(event ->textArea.clear());
@@ -51,6 +56,13 @@ public class ShowWindow {
         btnAllSubjects.setFont(new Font(15));
 
         btnAllSubjects.setOnAction(event -> textArea.setText(gameRoom.allSubjects().toString()));
+
+
+        Button btnAllSubjectsToFile = new Button("Print AllSubjects To File");
+        btnAllSubjectsToFile.setFont(new Font(15));
+
+        btnAllSubjectsToFile.setOnAction(event -> textArea.setText(gameRoom.allSubjectsToFile()));
+
 
         Button btnSortByPrice = new Button("Sort By Price");
         btnSortByPrice.setFont(new Font(15));
@@ -84,8 +96,8 @@ public class ShowWindow {
 
         btnAmountOfOperation.setOnAction(event -> textArea.setText(gameRoom.getAmountOfOperation()));
 
-        FlowPane root = new FlowPane(10,10, textArea,btnAdd,btnClear,btnPriceOfAllSubjects,btnWeightOfAllSubjects
-                ,btnSubjectWithMaxPrice,btnSubjectWithMaxWeight,btnAllSubjects,btnSortByPrice,btnSortByWeight,textField
+        FlowPane root = new FlowPane(10,10, textArea,btnAdd,btnAddHard,btnClear,btnPriceOfAllSubjects,btnWeightOfAllSubjects
+                ,btnSubjectWithMaxPrice,btnSubjectWithMaxWeight,btnAllSubjects,btnAllSubjectsToFile,btnSortByPrice,btnSortByWeight,textField
                 ,btnSearchByPrice,btnSearchByName,btnAmountOfOperation);
         root.setAlignment(Pos.CENTER);
 
