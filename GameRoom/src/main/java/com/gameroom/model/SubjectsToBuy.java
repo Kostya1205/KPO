@@ -1,23 +1,27 @@
 package com.gameroom.model;
 
-import java.util.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Objects;
 
 public class SubjectsToBuy {
     private final List<SubjectToBuy> subjectsToBuys;
-
+    private static final Logger logger = LogManager.getLogger(SubjectsToBuy.class);
     public SubjectsToBuy() {
         this.subjectsToBuys = new ArrayList<>();
     }
 
     public void sortByPrice(){
         Comparator<SubjectToBuy> priceComparator = Comparator.comparingInt(SubjectToBuy::getPrice);
-
         // Сортируем список с использованием компаратора
         subjectsToBuys.sort(priceComparator);
     }
     public void sortByWeight(){
         Comparator<SubjectToBuy> priceComparator = Comparator.comparingInt(SubjectToBuy::getWeight);
-
         // Сортируем список с использованием компаратора
         subjectsToBuys.sort(priceComparator);
     }
@@ -36,34 +40,66 @@ public class SubjectsToBuy {
         return subjectsToBuy2;
     }
     public String priceOfAll(){
-        int sum = 0;
-        for (SubjectToBuy subjectToBuy: subjectsToBuys) {
-            sum+=subjectToBuy.getPrice();
+        try {
+            if (subjectsToBuys.isEmpty())
+                throw new Exception("Array is empty");
+            int sum = 0;
+            for (SubjectToBuy subjectToBuy : subjectsToBuys) {
+                sum += subjectToBuy.getPrice();
+            }
+            return "Цена всех вещей равна " + sum;
         }
-        return "Цена всех вещей равна "+sum;
+        catch (Exception e){
+            logger.error("Array",e);
+            return "Please add subject";
+        }
     }
     public String weightOfAll(){
+        try {
+            if (subjectsToBuys.isEmpty())
+                throw new Exception("Array is empty");
         int sum = 0;
         for (SubjectToBuy subjectToBuy: subjectsToBuys) {
             sum+=subjectToBuy.getWeight();
         }
         return "Вес всех Вещей равен "+sum;
+        }
+        catch (Exception e){
+            logger.error("Array",e);
+            return "Please add subject";
+        }
     }
     public String maxWeight(){
+        try {
+            if (subjectsToBuys.isEmpty())
+                throw new Exception("Array is empty");
         SubjectToBuy maxSubjectToBuy = subjectsToBuys.get(subjectsToBuys.size()-1);
         for (SubjectToBuy subjectToBuy: subjectsToBuys) {
             if(maxSubjectToBuy.getWeight()<subjectToBuy.getWeight())
                 maxSubjectToBuy=subjectToBuy;
         }
         return "Subject with max weight = "+maxSubjectToBuy;
+        }
+        catch (Exception e){
+            logger.error("Array",e);
+            return "Please add subject";
+        }
     }
     public String maxPrice(){
-        SubjectToBuy maxSubjectToBuy = subjectsToBuys.get(subjectsToBuys.size()-1);
-        for (SubjectToBuy subjectToBuy: subjectsToBuys) {
-            if(maxSubjectToBuy.getPrice()<subjectToBuy.getPrice())
-                maxSubjectToBuy=subjectToBuy;
+        try {
+            if (subjectsToBuys.isEmpty())
+                throw new Exception("Array is empty");
+            SubjectToBuy maxSubjectToBuy = subjectsToBuys.get(subjectsToBuys.size() - 1);
+            for (SubjectToBuy subjectToBuy : subjectsToBuys) {
+                if (maxSubjectToBuy.getPrice() < subjectToBuy.getPrice())
+                    maxSubjectToBuy = subjectToBuy;
+            }
+            return "Subject with max price = " + maxSubjectToBuy;
+        }catch (Exception e)
+        {
+            logger.error("Array", e);
+            return "Please add subject";
         }
-        return "Subject with max price = "+maxSubjectToBuy;
     }
     public SubjectToBuy get(int number) {
         return subjectsToBuys.get(number);
