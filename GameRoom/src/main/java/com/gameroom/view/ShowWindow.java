@@ -109,9 +109,15 @@ public class ShowWindow {
             }
         });
 
+
+        Button btnNew = new Button("Clean GameRoom");
+        btnNew.setFont(new Font(15));
+        btnNew.setOnAction(event -> {
+            gameRoom.clean();
+        });
         FlowPane root = new FlowPane(10,10, textArea,btnAdd,btnAddHard,btnClear,btnPriceOfAllSubjects,btnWeightOfAllSubjects
                 ,btnSubjectWithMaxPrice,btnSubjectWithMaxWeight,btnAllSubjects,btnAllSubjectsToFile,btnSortByPrice,btnSortByWeight,textField
-                ,btnSearchByPrice,btnSearchByName,btnAmountOfOperation,btnSave);
+                ,btnSearchByPrice,btnSearchByName,btnAmountOfOperation,btnSave,btnNew);
         root.setAlignment(Pos.CENTER);
 
 
