@@ -2,6 +2,7 @@ package com.gameroom.view;
 
 
 import com.gameroom.controller.GameMachine;
+import com.gameroom.controller.LocalManager;
 import com.gameroom.model.GameRoom;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -13,66 +14,68 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 public class ShowWindow {
-    public ShowWindow(GameRoom gameRoom, Stage primaryStage){
+    public ShowWindow(GameRoom gameRoom, Stage primaryStage) {
+        ResourceBundle messages = LocalManager.getMessage();
         TextArea textArea = new TextArea();
         textArea.setPrefColumnCount(55);
         textArea.setPrefRowCount(27);
 
 
-        Button btnAdd = new Button("Add subject in room");
+        Button btnAdd = new Button(messages.getString("btnAdd"));
         btnAdd.setFont(new Font(15));
         btnAdd.setOnAction(event -> textArea.setText(new GameMachine().buySubject(gameRoom)));
 
-        Button btnAddHard = new Button("Add subject Hurd in room");
+        Button btnAddHard = new Button(messages.getString("btnAddHard"));
         btnAddHard.setFont(new Font(15));
         btnAddHard.setOnAction(event -> textArea.setText(new GameMachine().buySubjectHurd(gameRoom)));
 
 
-        Button btnClear = new Button("Clear textArea");
+        Button btnClear = new Button(messages.getString("btnClear"));
         btnClear.setFont(new Font(15));
         btnClear.setOnAction(event ->textArea.clear());
 
-        Button btnPriceOfAllSubjects = new Button("PriceOfAllSubjects");
+        Button btnPriceOfAllSubjects = new Button(messages.getString("btnPriceOfAllSubjects"));
         btnPriceOfAllSubjects.setFont(new Font(15));
 
         btnPriceOfAllSubjects.setOnAction(event -> textArea.setText(gameRoom.priceOfAllSubjects()));
 
-        Button btnWeightOfAllSubjects = new Button("WeightOfAllSubjects");
+        Button btnWeightOfAllSubjects = new Button(messages.getString("btnWeightOfAllSubjects"));
         btnWeightOfAllSubjects.setFont(new Font(15));
 
         btnWeightOfAllSubjects.setOnAction(event -> textArea.setText(gameRoom.weightOfAllSubjects()));
 
-        Button btnSubjectWithMaxPrice = new Button("SubjectWithMaxPrice");
+        Button btnSubjectWithMaxPrice = new Button(messages.getString("btnSubjectWithMaxPrice"));
         btnSubjectWithMaxPrice.setFont(new Font(15));
 
         btnSubjectWithMaxPrice.setOnAction(event -> textArea.setText(gameRoom.subjectWithMaxPrice()));
 
-        Button btnSubjectWithMaxWeight = new Button("SubjectWithMaxWeight");
+        Button btnSubjectWithMaxWeight = new Button(messages.getString("btnSubjectWithMaxWeight"));
         btnSubjectWithMaxWeight.setFont(new Font(15));
 
         btnSubjectWithMaxWeight.setOnAction(event -> textArea.setText(gameRoom.subjectWithMaxWeight()));
 
-        Button btnAllSubjects = new Button("Print AllSubjects");
+        Button btnAllSubjects = new Button(messages.getString("btnAllSubjects"));
         btnAllSubjects.setFont(new Font(15));
 
         btnAllSubjects.setOnAction(event -> textArea.setText(gameRoom.allSubjects().toString()));
 
 
-        Button btnAllSubjectsToFile = new Button("Print AllSubjects To File");
+        Button btnAllSubjectsToFile = new Button(messages.getString("btnAllSubjectsToFile"));
         btnAllSubjectsToFile.setFont(new Font(15));
 
         btnAllSubjectsToFile.setOnAction(event -> textArea.setText(gameRoom.allSubjectsToFile()));
 
 
-        Button btnSortByPrice = new Button("Sort By Price");
+        Button btnSortByPrice = new Button(messages.getString("btnSortByPrice"));
         btnSortByPrice.setFont(new Font(15));
 
         btnSortByPrice.setOnAction(event -> gameRoom.sortByPrice());
 
 
-        Button btnSortByWeight = new Button("Sort By Weight");
+        Button btnSortByWeight = new Button(messages.getString("btnSortByWeight"));
         btnSortByWeight.setFont(new Font(15));
 
         btnSortByWeight.setOnAction(event -> gameRoom.sortByWeight());
@@ -82,24 +85,24 @@ public class ShowWindow {
         textField.setFont(new Font(15));
 
 
-        Button btnSearchByPrice = new Button("Search by price");
+        Button btnSearchByPrice = new Button(messages.getString("btnSearchByPrice"));
         btnSearchByPrice.setFont(new Font(15));
 
         btnSearchByPrice.setOnAction(event -> textArea.setText(gameRoom.searchByPrice(textField.getText())));
 
 
-        Button btnSearchByName = new Button("Search by name");
+        Button btnSearchByName = new Button(messages.getString("btnSearchByName"));
         btnSearchByName.setFont(new Font(15));
 
         btnSearchByName.setOnAction(event -> textArea.setText(gameRoom.searchByName(textField.getText())));
 
-        Button btnAmountOfOperation = new Button("Amount Of Operation");
+        Button btnAmountOfOperation = new Button(messages.getString("btnAmountOfOperation"));
         btnAmountOfOperation.setFont(new Font(15));
 
         btnAmountOfOperation.setOnAction(event -> textArea.setText(gameRoom.getAmountOfOperation()));
 
 
-        Button btnSave = new Button("Save GameRoom");
+        Button btnSave = new Button(messages.getString("btnSave"));
         btnSave.setFont(new Font(15));
         btnSave.setOnAction(event -> {
             try {
@@ -110,7 +113,7 @@ public class ShowWindow {
         });
 
 
-        Button btnNew = new Button("Clean GameRoom");
+        Button btnNew = new Button(messages.getString("btnNew"));
         btnNew.setFont(new Font(15));
         btnNew.setOnAction(event -> {
             gameRoom.clean();

@@ -1,18 +1,18 @@
 package com.gameroom.model;
 
+import com.gameroom.controller.LocalManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class SubjectsToBuy implements Serializable {
+    private final ResourceBundle messages;
     private final List<SubjectToBuy> subjectsToBuys;
     private static final Logger logger = LogManager.getLogger(SubjectsToBuy.class);
     public SubjectsToBuy() {
+        this.messages = LocalManager.getMessage();
         this.subjectsToBuys = new ArrayList<>();
     }
 
@@ -43,22 +43,22 @@ public class SubjectsToBuy implements Serializable {
     public String priceOfAll(){
         try {
             if (subjectsToBuys.isEmpty())
-                throw new Exception("Array is empty");
+                throw new Exception(messages.getString("arrayEmpty"));
             int sum = 0;
             for (SubjectToBuy subjectToBuy : subjectsToBuys) {
                 sum += subjectToBuy.getPrice();
             }
-            return "Цена всех вещей равна " + sum;
+            return messages.getString("priceOfAllsubj") + sum;
         }
         catch (Exception e){
             logger.error("Array",e);
-            return "Please add subject";
+            return messages.getString("PleaseAddSubject");
         }
     }
     public String weightOfAll(){
         try {
             if (subjectsToBuys.isEmpty())
-                throw new Exception("Array is empty");
+                throw new Exception(messages.getString("arrayEmpty"));
         int sum = 0;
         for (SubjectToBuy subjectToBuy: subjectsToBuys) {
             sum+=subjectToBuy.getWeight();
@@ -67,39 +67,39 @@ public class SubjectsToBuy implements Serializable {
         }
         catch (Exception e){
             logger.error("Array",e);
-            return "Please add subject";
+            return messages.getString("PleaseAddSubject");
         }
     }
     public String maxWeight(){
         try {
             if (subjectsToBuys.isEmpty())
-                throw new Exception("Array is empty");
+                throw new Exception(messages.getString("arrayEmpty"));
         SubjectToBuy maxSubjectToBuy = subjectsToBuys.get(subjectsToBuys.size()-1);
         for (SubjectToBuy subjectToBuy: subjectsToBuys) {
             if(maxSubjectToBuy.getWeight()<subjectToBuy.getWeight())
                 maxSubjectToBuy=subjectToBuy;
         }
-        return "Subject with max weight = "+maxSubjectToBuy;
+        return messages.getString("SubjWithMaxWeight")+maxSubjectToBuy;
         }
         catch (Exception e){
             logger.error("Array",e);
-            return "Please add subject";
+            return messages.getString("PleaseAddSubject");
         }
     }
     public String maxPrice(){
         try {
             if (subjectsToBuys.isEmpty())
-                throw new Exception("Array is empty");
+                throw new Exception(messages.getString("arrayEmpty"));
             SubjectToBuy maxSubjectToBuy = subjectsToBuys.get(subjectsToBuys.size() - 1);
             for (SubjectToBuy subjectToBuy : subjectsToBuys) {
                 if (maxSubjectToBuy.getPrice() < subjectToBuy.getPrice())
                     maxSubjectToBuy = subjectToBuy;
             }
-            return "Subject with max price = " + maxSubjectToBuy;
+            return messages.getString("SubjWithMaxPrice") + maxSubjectToBuy;
         }catch (Exception e)
         {
             logger.error("Array", e);
-            return "Please add subject";
+            return messages.getString("PleaseAddSubject");
         }
     }
     public SubjectToBuy get(int number) {
