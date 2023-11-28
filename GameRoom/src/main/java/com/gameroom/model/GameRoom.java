@@ -2,8 +2,10 @@ package com.gameroom.model;
 
 import org.writet.Write;
 
-public class GameRoom {
-    private final SubjectsToBuy subjectsToBuy;
+import java.io.Serializable;
+
+public class GameRoom implements Serializable {
+    private SubjectsToBuy subjectsToBuy;
     private int amountOfOperation;
 
     public GameRoom(){
@@ -67,5 +69,10 @@ public class GameRoom {
     }
     public String getAmountOfOperation(){
         return "Amount of operation = "+amountOfOperation;
+    }
+
+    public void clean() {
+        this.amountOfOperation = 0;
+        subjectsToBuy =new SubjectsToBuy();
     }
 }

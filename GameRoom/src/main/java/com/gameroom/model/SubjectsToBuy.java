@@ -3,12 +3,13 @@ package com.gameroom.model;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 
-public class SubjectsToBuy {
+public class SubjectsToBuy implements Serializable {
     private final List<SubjectToBuy> subjectsToBuys;
     private static final Logger logger = LogManager.getLogger(SubjectsToBuy.class);
     public SubjectsToBuy() {

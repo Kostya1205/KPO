@@ -1,8 +1,9 @@
 package com.gameroom.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class SubjectToBuy {
+public class SubjectToBuy implements Serializable {
     protected final int price;
     protected final int weight;
     protected final String name;
