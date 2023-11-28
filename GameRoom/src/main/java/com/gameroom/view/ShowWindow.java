@@ -12,6 +12,8 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class ShowWindow {
     public ShowWindow(GameRoom gameRoom, Stage primaryStage){
         TextArea textArea = new TextArea();
@@ -96,9 +98,20 @@ public class ShowWindow {
 
         btnAmountOfOperation.setOnAction(event -> textArea.setText(gameRoom.getAmountOfOperation()));
 
+
+        Button btnSave = new Button("Save GameRoom");
+        btnSave.setFont(new Font(15));
+        btnSave.setOnAction(event -> {
+            try {
+                WriteSavedGameRoom.setGameRoom(gameRoom);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
         FlowPane root = new FlowPane(10,10, textArea,btnAdd,btnAddHard,btnClear,btnPriceOfAllSubjects,btnWeightOfAllSubjects
                 ,btnSubjectWithMaxPrice,btnSubjectWithMaxWeight,btnAllSubjects,btnAllSubjectsToFile,btnSortByPrice,btnSortByWeight,textField
-                ,btnSearchByPrice,btnSearchByName,btnAmountOfOperation);
+                ,btnSearchByPrice,btnSearchByName,btnAmountOfOperation,btnSave);
         root.setAlignment(Pos.CENTER);
 
 
