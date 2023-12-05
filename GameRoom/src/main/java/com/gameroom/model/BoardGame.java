@@ -10,6 +10,6 @@ public class BoardGame extends SubjectToBuy{
     }
     @Override
     public String getSubjectName() {
-        return LocalManager.getMessage().getString("BoardGame");
+        return LocalManager.getMessage("BoardGame");
     }
 }

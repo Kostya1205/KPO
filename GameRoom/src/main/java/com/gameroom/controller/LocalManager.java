@@ -13,7 +13,7 @@ public class LocalManager {
     public static void setCurrentLocale(Locale locale) {
         currentLocale = locale;
     }
-    public static ResourceBundle getMessage(){
-        return ResourceBundle.getBundle("messages", currentLocale);
+    public static String getMessage(String text){
+        return ResourceBundle.getBundle("messages", currentLocale).getString(text);
     }
 }

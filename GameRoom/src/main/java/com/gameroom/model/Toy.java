@@ -9,7 +9,7 @@ public class Toy extends SubjectToBuy{
 
     @Override
     public String getSubjectName() {
-        return LocalManager.getMessage().getString("Toy");
+        return LocalManager.getMessage("Toy");
     }
 
 }

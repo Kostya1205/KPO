@@ -8,11 +8,10 @@ import java.io.Serializable;
 import java.util.*;
 
 public class SubjectsToBuy implements Serializable {
-    private final ResourceBundle messages;
+
     private final List<SubjectToBuy> subjectsToBuys;
     private static final Logger logger = LogManager.getLogger(SubjectsToBuy.class);
     public SubjectsToBuy() {
-        this.messages = LocalManager.getMessage();
         this.subjectsToBuys = new ArrayList<>();
     }
 
@@ -43,22 +42,22 @@ public class SubjectsToBuy implements Serializable {
     public String priceOfAll(){
         try {
             if (subjectsToBuys.isEmpty())
-                throw new Exception(messages.getString("arrayEmpty"));
+                throw new Exception(LocalManager.getMessage("arrayEmpty"));
             int sum = 0;
             for (SubjectToBuy subjectToBuy : subjectsToBuys) {
                 sum += subjectToBuy.getPrice();
             }
-            return messages.getString("priceOfAllsubj") + sum;
+            return LocalManager.getMessage("priceOfAllsubj") + sum;
         }
         catch (Exception e){
             logger.error("Array",e);
-            return messages.getString("PleaseAddSubject");
+            return LocalManager.getMessage("PleaseAddSubject");
         }
     }
     public String weightOfAll(){
         try {
             if (subjectsToBuys.isEmpty())
-                throw new Exception(messages.getString("arrayEmpty"));
+                throw new Exception(LocalManager.getMessage("arrayEmpty"));
         int sum = 0;
         for (SubjectToBuy subjectToBuy: subjectsToBuys) {
             sum+=subjectToBuy.getWeight();
@@ -67,39 +66,39 @@ public class SubjectsToBuy implements Serializable {
         }
         catch (Exception e){
             logger.error("Array",e);
-            return messages.getString("PleaseAddSubject");
+            return LocalManager.getMessage("PleaseAddSubject");
         }
     }
     public String maxWeight(){
         try {
             if (subjectsToBuys.isEmpty())
-                throw new Exception(messages.getString("arrayEmpty"));
+                throw new Exception(LocalManager.getMessage("arrayEmpty"));
         SubjectToBuy maxSubjectToBuy = subjectsToBuys.get(subjectsToBuys.size()-1);
         for (SubjectToBuy subjectToBuy: subjectsToBuys) {
             if(maxSubjectToBuy.getWeight()<subjectToBuy.getWeight())
                 maxSubjectToBuy=subjectToBuy;
         }
-        return messages.getString("SubjWithMaxWeight")+maxSubjectToBuy;
+        return LocalManager.getMessage("SubjWithMaxWeight")+maxSubjectToBuy;
         }
         catch (Exception e){
             logger.error("Array",e);
-            return messages.getString("PleaseAddSubject");
+            return LocalManager.getMessage("PleaseAddSubject");
         }
     }
     public String maxPrice(){
         try {
             if (subjectsToBuys.isEmpty())
-                throw new Exception(messages.getString("arrayEmpty"));
+                throw new Exception(LocalManager.getMessage("arrayEmpty"));
             SubjectToBuy maxSubjectToBuy = subjectsToBuys.get(subjectsToBuys.size() - 1);
             for (SubjectToBuy subjectToBuy : subjectsToBuys) {
                 if (maxSubjectToBuy.getPrice() < subjectToBuy.getPrice())
                     maxSubjectToBuy = subjectToBuy;
             }
-            return messages.getString("SubjWithMaxPrice") + maxSubjectToBuy;
+            return LocalManager.getMessage("SubjWithMaxPrice") + maxSubjectToBuy;
         }catch (Exception e)
         {
             logger.error("Array", e);
-            return messages.getString("PleaseAddSubject");
+            return LocalManager.getMessage("PleaseAddSubject");
         }
     }
     public SubjectToBuy get(int number) {

@@ -11,13 +11,11 @@ public class SubjectToBuy implements Serializable {
     protected final int price;
     protected final int weight;
     protected final String name;
-    private final ResourceBundle messages;
 
     public SubjectToBuy(int price, int weight, String name) {
         this.price = price;
         this.weight = weight;
         this.name = name;
-        messages = LocalManager.getMessage();
     }
 
     public int getPrice() {
@@ -38,7 +36,7 @@ public class SubjectToBuy implements Serializable {
 
     @Override
     public String toString() {
-        return Message.getString("Type")+" "+getSubjectName()+" "+Message.getString("Name")+" "+getName()+" "+Message.getString("Weight")+" "+getWeight()+" "+Message.getString("Price")+" "+getPrice()+"\n";
+        return LocalManager.getMessage("Type")+" "+getSubjectName()+" "+LocalManager.getMessage("Name")+" "+getName()+" "+LocalManager.getMessage("Weight")+" "+getWeight()+" "+LocalManager.getMessage("Price")+" "+getPrice()+"\n";
 
     }
 

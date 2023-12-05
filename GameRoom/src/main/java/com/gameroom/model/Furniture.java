@@ -9,6 +9,6 @@ public class Furniture extends SubjectToBuy{
 
     @Override
     public String getSubjectName() {
-        return LocalManager.getMessage().getString("Furniture");
+        return LocalManager.getMessage("Furniture");
     }
 }
