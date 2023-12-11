@@ -4,9 +4,12 @@ package com.gameroom.view;
 import com.gameroom.controller.GameMachine;
 import com.gameroom.controller.LocalManager;
 import com.gameroom.model.GameRoom;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
@@ -14,10 +17,29 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ResourceBundle;
+import java.util.Locale;
 
 public class ShowWindow {
+
     public ShowWindow(GameRoom gameRoom, Stage primaryStage) {
+
+
+        ObservableList<String> langs = FXCollections.observableArrayList("en", "ru");
+        ComboBox<String> langsComboBox = new ComboBox<String>(langs);
+        langsComboBox.setValue("ru"); // устанавливаем выбранный элемент по умолчанию
+
+        // получаем выбранный элемент
+        langsComboBox.setOnAction(event ->
+
+        {
+            LocalManager.setCurrentLocale(new Locale(langsComboBox.getValue()));
+            primaryStage.setScene(showMainScene(gameRoom,langsComboBox));
+        });
+        primaryStage.setScene(showMainScene(gameRoom,langsComboBox));
+        primaryStage.setTitle("GameRoom");
+        primaryStage.show();
+    }
+    private Scene showMainScene(GameRoom gameRoom,ComboBox<String> langsComboBox){
         TextArea textArea = new TextArea();
         textArea.setPrefColumnCount(55);
         textArea.setPrefRowCount(27);
@@ -117,14 +139,10 @@ public class ShowWindow {
         btnNew.setOnAction(event -> {
             gameRoom.clean();
         });
-        FlowPane root = new FlowPane(10,10, textArea,btnAdd,btnAddHard,btnClear,btnPriceOfAllSubjects,btnWeightOfAllSubjects
+        FlowPane root= new FlowPane(10,10, langsComboBox,textArea,btnAdd,btnAddHard,btnClear,btnPriceOfAllSubjects,btnWeightOfAllSubjects
                 ,btnSubjectWithMaxPrice,btnSubjectWithMaxWeight,btnAllSubjects,btnAllSubjectsToFile,btnSortByPrice,btnSortByWeight,textField
                 ,btnSearchByPrice,btnSearchByName,btnAmountOfOperation,btnSave,btnNew);
         root.setAlignment(Pos.CENTER);
-
-
-        primaryStage.setTitle("GameRoom");
-        primaryStage.setScene(new Scene(root, 700, 700));
-        primaryStage.show();
+        return new Scene(root,700, 800);
     }
 }

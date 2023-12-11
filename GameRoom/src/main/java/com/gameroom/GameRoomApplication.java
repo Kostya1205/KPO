@@ -14,7 +14,6 @@ import java.util.Locale;
 public class GameRoomApplication extends Application {
     @Override
     public void start(Stage primaryStage) {
-        LocalManager.setCurrentLocale(new Locale("ru"));
         try {
             new ShowWindow(WriteSavedGameRoom.getGameRoom().getGameRoom(),primaryStage);
         } catch (IOException | ClassNotFoundException e) {
