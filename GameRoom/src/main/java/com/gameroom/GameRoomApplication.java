@@ -11,16 +11,8 @@ import java.io.IOException;
 import java.util.Locale;
 
 
-public class GameRoomApplication extends Application {
-    @Override
-    public void start(Stage primaryStage) {
-        try {
-            new ShowWindow(WriteSavedGameRoom.getGameRoom().getGameRoom(),primaryStage);
-        } catch (IOException | ClassNotFoundException e) {
-            new ShowWindow(new GameRoom(),primaryStage);
-        }
-    }
+public class GameRoomApplication {
     public static void main(String[] args) {
-        launch();
+        GameRoomApplicationSecond.main(args);
     }
 }
